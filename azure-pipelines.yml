@@ -29,10 +29,10 @@ steps:
     appName: 'yhDotnetCoreDemoLinux'
     package: '$(Build.ArtifactStagingDirectory)/*.zip'
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'yhAzureConnection'
-    appType: 'webApp'
-    appName: 'yhDotnetCoreDemo'
-    package: '$(Build.ArtifactStagingDirectory)/*.zip'
-    deploymentMethod: 'zipDeploy'
+# - task: AzureWebApp@1
+#   inputs:
+#     azureSubscription: 'yhAzureConnection'
+#     appType: 'webApp'
+#     appName: 'yhDotnetCoreDemo'
+#     package: '$(Build.ArtifactStagingDirectory)/*.zip'
+#     deploymentMethod: 'zipDeploy'
