@@ -15,3 +15,9 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'df77c0cc-a737-4cb2-8906-adb0162c1dab'
+    appName: 'yhDotnetCoreDemo'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip
