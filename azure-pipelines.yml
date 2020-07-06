@@ -29,5 +29,6 @@ steps:
     azureSubscription: 'yhAzureConnection'
     appType: 'webApp'
     appName: 'yhDotnetCoreDemo'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    #package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     deploymentMethod: 'auto'
