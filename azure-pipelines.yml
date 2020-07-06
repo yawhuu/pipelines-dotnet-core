@@ -16,18 +16,24 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: ArchiveFiles@2
+- task: DotNetCoreCLI@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/dotnetdemo.zip'
-    replaceExistingArchive: true
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+#- task: ArchiveFiles@2
+#  inputs:
+#    rootFolderOrFile: '$(Build.BinariesDirectory)'
+#    includeRootFolder: true
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/dotnetdemo.zip'
+#    replaceExistingArchive: true
 
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'yhAzureConnection'
     appType: 'webApp'
     appName: 'yhDotnetCoreDemo'
-    package: '$(Build.BinariesDirectory)/dotnetdemo.zip'
+    package: '$(Build.ArtifactStagingDirectory)/*.zip'
     deploymentMethod: 'zipDeploy'
