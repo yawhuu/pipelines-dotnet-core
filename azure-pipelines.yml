@@ -30,5 +30,5 @@ steps:
     appType: 'webApp'
     appName: 'yhDotnetCoreDemo'
     #package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    package: '$(Build.BinariesDirectory)/*.zip'
     deploymentMethod: 'auto'
